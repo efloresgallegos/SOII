@@ -55,24 +55,12 @@ def enviar_algo(sender_sk, sender_addr, receiver_addr, amount_micro):
 
 # ----------------------------------------------------------------------
 if __name__ == "__main__":
-    # 1️⃣ Generar o cargar una cuenta
-    # Si ya tienes una frase mnemónica, reemplaza las líneas siguientes:
-    #   my_mnemonic = "tu frase aquí ..."
-    #   private_key = mnemonic.to_private_key(my_mnemonic)
-    #   address = account.address_from_private_key(private_key)
+
     private_key, address = crear_cuenta()
 
     # 2️⃣ Ver saldo (debe ser 0 al principio)
     obtener_saldo(address)
 
-    # ------------------------------------------------------------------
-    # 👉 Paso manual: solicita fondos en la faucet de TestNet
-    # URL: https://bank.testnet.algorand.network/
-    # Copia la dirección mostrada arriba y pulsa “Fund Account”.
-    # Espera unos segundos y vuelve a ejecutar este script (o llama a
-    # obtener_saldo() de nuevo) para comprobar que ahora tienes 1 ALGO
-    # (o más) en la cuenta.
-    # ------------------------------------------------------------------
 
     input("\nPresiona ENTER después de haber recibido fondos de la faucet...")
 
