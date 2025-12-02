@@ -1,0 +1,21 @@
+# Byte‑compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entorno virtual
+.venv/
+env/
+venv/
+
+# Archivos de configuración locales (no subir a Git)
+.env
+config_local.py
+
+# Logs y bases de datos temporales
+*.log
+*.sqlite3
+
+# Archivos de salida de Algorand (si los generas)
+*.txn
+*.lsig

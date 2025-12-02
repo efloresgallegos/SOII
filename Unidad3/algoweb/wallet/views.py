@@ -6,6 +6,12 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from algosdk.v2client import algod, indexer
 from algosdk import account
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from .contracts.compile_contract import compile_pyteal
+from .contracts.deploy_contract import deploy_contract
+from .contracts.get_state import get_global_state
+from .models import SmartContract
 
 
 def envio(request):
@@ -130,3 +136,17 @@ def registrar_wallet(request):
         return redirect("mi_wallet")
 
     return render(request, "wallet/registrar_wallet.html")
+
+@login_required
+def contract_view(request):
+    message = ""
+    if request.method == "POST":
+        action = request.POST.get("action")
+
+        if action == "compile":
+            message = compile_pyteal()
+        elif action == "deploy":
+            message = deploy_contract()
+
+    contracts = SmartContract.objects.filter(owner=request.user)
+    return render(request, "wallet/contract.html", {"message": message, "contracts": contracts})

@@ -1,0 +1,24 @@
+{% extends 'wallet/base.html' %}
+
+{% block content %}
+<h2>Gestión de Contratos Inteligentes</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" name="action" value="compile">🧠 Compilar contrato</button>
+    <button type="submit" name="action" value="deploy">🚀 Desplegar en Algorand</button>
+</form>
+
+{% if message %}
+    <p><strong>Resultado:</strong> {{ message }}</p>
+{% endif %}
+
+<h3>Mis Contratos</h3>
+<ul>
+{% for c in contracts %}
+    <li>{{ c.name }} - {{ c.txid }}</li>
+{% empty %}
+    <li>No tienes contratos registrados aún.</li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -7,6 +7,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('get_balance/', views.get_balance, name='get_balance'),
     path("mi_wallet/", views.mi_wallet, name="mi_wallet"),
-     path('transacciones/', views.transacciones, name='transacciones'),
-     path('registrar_wallet/', views.registrar_wallet, name='registrar_wallet'),
+    path('transacciones/', views.transacciones, name='transacciones'),
+    path('registr  ar_wallet/', views.registrar_wallet, name='registrar_wallet'),
+    path('contratos/', views.contract_view, name='contratos'),
 ]
